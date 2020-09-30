@@ -7,19 +7,19 @@ package com.leetcode.soulation.domain;
  * @Modified By:
  * @Description:
  */
-//public class ListNode {
-//    public int val;
-//    public ListNode listNode;
-//
-//    public ListNode() {
-//    }
-//
-//    public ListNode(int val) {
-//        this.val = val;
-//    }
-//
-//    public ListNode(int val, ListNode listNode) {
-//        this.val = val;
-//        this.listNode = listNode;
-//    }
-//}
+public class ListNode {
+    public int val;
+    public ListNode next;
+
+    public ListNode() {
+    }
+
+    public ListNode(int val) {
+        this.val = val;
+    }
+
+    public ListNode(int val, ListNode listNode) {
+        this.val = val;
+        this.next = listNode;
+    }
+}
