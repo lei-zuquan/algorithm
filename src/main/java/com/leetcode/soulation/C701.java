@@ -1,5 +1,7 @@
 package com.leetcode.soulation;
 
+import com.leetcode.soulation.domain.TreeNode;
+
 /**
  * @Author:
  * @Date: Created in 10:39 上午 2020/9/30
@@ -8,21 +10,6 @@ package com.leetcode.soulation;
  * @Description:
  */
 
-//class BstNode {
-//    int val;
-//    BstNode left;
-//    BstNode right;
-//
-//    public BstNode(int val) {
-//        this.val = val;
-//    }
-//
-//    public BstNode(int val, BstNode left, BstNode right) {
-//        this.val = val;
-//        this.left = left;
-//        this.right = right;
-//    }
-//}
 
 public class C701 {
 
