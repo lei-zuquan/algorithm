@@ -38,6 +38,8 @@ public class C136 {
             1.如果我们对 0和二进制位做XOR运算，得到的仍然是这个二进制位
             2.如果我们对相同的二进制位做XOR运算，返回的结果是0
             3.XOR满足交换律和结合律
+        时间复杂度：O(n)
+        空间复杂度：O(1)
      */
     public int singleNumber(int[] nums) {
         int single = 0;

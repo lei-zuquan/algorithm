@@ -46,7 +46,9 @@ public class C021 {
             System.out.println(listNode.val);
             listNode = listNode.next;
         }
-    }    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    }
+
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode currNode1 = l1;
         ListNode currNode2 = l2;
         List<Integer> list = new LinkedList<>();
