@@ -48,7 +48,7 @@ public class C217 {
     // 如果存在则存在重复元素、不存在的话则向hashMap中插入元数
     // 时间复杂度：O(n)
     // 空间复杂度：O(n)
-    public boolean containsDuplicate(int[] nums) {
+    public boolean containsDuplicate2(int[] nums) {
         HashMap<Integer, Integer> hashMap = new HashMap<>();
         for (int i = 0; i < nums.length; i++) {
             if (hashMap.containsKey(nums[i])) {
@@ -60,7 +60,22 @@ public class C217 {
         return false;
     }
 
+    // 排序后，再对数组相邻元素两两异或。如果异或为0，则代表存在一样的元素；
+    // 时间复杂度：O(nlogn)
+    // 空间复杂度：O(1)
+    public boolean containsDuplicate(int[] nums) {
+        if (nums.length <= 1) {
+            return false;
+        }
+        Arrays.sort(nums);
 
+        for (int i = 1; i < nums.length; i++) {
+            if ((nums[i-1] ^ nums[i]) == 0) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 
 
