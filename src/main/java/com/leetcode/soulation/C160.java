@@ -46,6 +46,8 @@ public class C160 {
     }
 
     // 使用A、B指针，走完自己的链表后，再走对方的链表
+    // 时间复杂度：O(n)
+    // 空间复毁度：O(1)
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         // 需要做安全检查
         if (headA == null || headB == null) {
@@ -82,6 +84,8 @@ public class C160 {
     }
 
     // 使用额外空间辅助
+    // 时间复杂度：O(n)
+    // 空间复毁度：O(n)
     public ListNode getIntersectionNode1(ListNode headA, ListNode headB) {
         HashMap<ListNode, ListNode> hashMap = new HashMap<>();
         ListNode currNode = headA;
