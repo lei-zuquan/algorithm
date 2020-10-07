@@ -74,7 +74,7 @@ public class C107 {
                 if (poll.right != null) queue.offer(poll.right);
             }
             // 将当前层节点信息放在结果队列中
-            res.add(0, list);
+            res.add(list);
         }
 
         return res;
