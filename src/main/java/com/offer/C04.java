@@ -1,7 +1,5 @@
 package com.offer;
 
-import java.lang.reflect.Member;
-
 /**
  * @Author:
  * @Date: 2020-10-07 10:16
@@ -31,7 +29,7 @@ import java.lang.reflect.Member;
 0 <= m <= 1000
 
  */
-public class C01 {
+public class C04 {
     public static void main(String[] args) {
         int[][] arr = {
                 {1,   4,  7, 11, 15},
@@ -41,7 +39,7 @@ public class C01 {
                 {18, 21, 23, 26, 30}
         };
 
-        C01 c01 = new C01();
+        C04 c01 = new C04();
         System.out.println(c01.findNumberIn2DArray(arr, 5));
         System.out.println(c01.findNumberIn2DArray(arr, 30));
         System.out.println(c01.findNumberIn2DArray(arr, 41));
