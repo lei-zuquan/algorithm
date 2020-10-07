@@ -28,23 +28,18 @@ public class C05 {
         System.out.println(c05.replaceSpace("   "));
     }
 
-    public String replaceSpace1(String s) {
-        String res = "";
-        int start = 0;
+    public String replaceSpace(String s) {
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             char aChar = s.charAt(i);
             if (aChar == ' ') {
-                res = res + s.substring(start, i) + "%20";
-                start = i+1;
+                sb.append("%20");
             } else {
-                // 判断最后字符是否完成
-                if (i == s.length()-1) {
-                    res = res + s.substring(start, i+1);
-                }
+                sb.append(aChar);
             }
         }
 
-        return res;
+        return sb.toString();
     }
 
     /*
@@ -60,7 +55,7 @@ public class C05 {
     如果字符 c 不是空格，则令 array[size] = c，并将 size 的值加 1
     遍历结束之后，size 的值等于替换后的字符串的长度，从 array 的前 size 个字符创建新字符串，并返回新字符串
      */
-    public String replaceSpace(String s) {
+    public String replaceSpace2(String s) {
         int length = s.length();
         char[] chars = new char[length*3];
         int size = 0;
@@ -77,4 +72,5 @@ public class C05 {
         String string = new String(chars, 0, size);
         return string;
     }
+
 }
