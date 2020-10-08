@@ -76,17 +76,14 @@ public class C02 {
                 Stack.push(root);
                 root = root.left;
             }
-
             root = Stack.pop();
             if (lastMinValue != null && root.val <= lastMinValue) {
                 return false;
             }
-
             lastMinValue = root.val;
 
             root = root.right;
         }
-
         return true;
     }
 
