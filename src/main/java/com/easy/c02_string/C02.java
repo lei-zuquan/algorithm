@@ -1,4 +1,4 @@
-package com.easy.string;
+package com.easy.c02_string;
 
 /**
  * @Author:
