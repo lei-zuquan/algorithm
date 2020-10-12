@@ -19,9 +19,9 @@ package com.leetcode.soulation.c500;
 在字符串中，每个单词由单个空格分隔，并且字符串中不会有任何额外的空格。
 
  */
-public class C577 {
+public class C557 {
     public static void main(String[] args) {
-        C577 c577 = new C577();
+        C557 c577 = new C557();
         String word1 = "Let's take LeetCode contest";
         System.out.println(c577.reverseWords(word1));
 
