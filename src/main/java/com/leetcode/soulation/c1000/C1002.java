@@ -69,7 +69,12 @@ public class C1002 {
             char[] chars = s.toCharArray();
             HashMap<Character, Integer> hashMap = new HashMap<>();
             for (int charIndex = 0; charIndex < chars.length; charIndex++) {
-                hashMap.put(chars[charIndex], 0);
+                if (hashMap.containsKey(chars[charIndex])) {
+                    hashMap.put(chars[charIndex], hashMap.get(chars[charIndex]) +1);
+                } else {
+                    hashMap.put(chars[charIndex], 1);
+                }
+
             }
             list.add(hashMap);
         }
@@ -79,9 +84,12 @@ public class C1002 {
             boolean hashMapFound = true;
             for (int listIndex = 0; listIndex < list.size(); listIndex++) {
                 HashMap<Character, Integer> hashMap = list.get(listIndex);
-                if (! hashMap.containsKey(A[minIndex].charAt(i))) {
+                Integer remainCnt = hashMap.get(A[minIndex].charAt(i));
+                if (remainCnt == null || remainCnt <= 0) {
                     hashMapFound = false;
                     break;
+                } else {
+                    hashMap.put(A[minIndex].charAt(i), hashMap.get(A[minIndex].charAt(i))-1);
                 }
             }
             if (hashMapFound) {
