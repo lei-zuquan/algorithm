@@ -9,6 +9,7 @@ package com.easy.c02_string;
  */
 
 /*
+8. 字符串转换整数 (atoi)
 字符串转换整数 (atoi)
 请你来实现一个atoi函数，使其能将字符串转换成整数。
 
@@ -73,6 +74,10 @@ public class C06 {
         System.out.println(c06.myAtoi("   +0 123"));
         System.out.println(c06.myAtoi("2147483648"));
         System.out.println(c06.myAtoi("2147483646")); // not ok
+        System.out.println(c06.myAtoi("-   234"));
+        System.out.println(c06.myAtoi("    -88827   5655  U"));
+        System.out.println(c06.myAtoi("  +  413"));  // 0
+        System.out.println(c06.myAtoi(" ++1")); // 0
     }
 
     public int myAtoi(String s) {
@@ -84,33 +89,41 @@ public class C06 {
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
             if (c == ' ') {
+                if (haveNeg) break;
+                if (havePlus) break;
                 if (haveFoundNum) break;
                 continue;
             }
 
             if (c == '+') {
-                if (haveNeg) return 0;
+                if (haveNeg) break;
+                if (havePlus) break;
                 if (haveFoundNum) break;
                 havePlus = true;
                 continue;
             }
 
             if (c == '-') {
-                if (havePlus) return 0;
+                if (haveNeg) break;
+                if (havePlus) break;
                 if (haveFoundNum) break;
                 haveNeg = true;
                 continue;
             }
-            if (c >= '0' && c<= '9') {
+            if (c >= '0' && c <= '9') {
                 haveFoundNum = true;
-                if (remain >= Integer.MAX_VALUE / 10) {
+                int currPlusValue = Integer.parseInt(c+"");
+                // 214748364  6
+                // Integer.MAX_VALUE 2147483647 / 10 = 214748364
+
+                if (remain > ((Integer.MAX_VALUE - currPlusValue) / 10)) {
                     if (haveNeg) {
                         return Integer.MIN_VALUE;
                     } else {
                         return Integer.MAX_VALUE;
                     }
                 }
-                remain = remain * 10 + Integer.parseInt(c + "");
+                remain = remain * 10 + currPlusValue;
             } else {
                 if (!haveFoundNum) {
                     return 0;
@@ -118,7 +131,6 @@ public class C06 {
                     break;
                 }
             }
-
         }
 
         if (haveNeg) remain = -1 * remain;
