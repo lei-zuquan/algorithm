@@ -26,6 +26,7 @@ public class C08 {
         System.out.println(c08.isNumber("1 "));
         System.out.println(c08.isNumber(".1"));
         System.out.println(c08.isNumber("32.e-80123"));
+        System.out.println(c08.isNumber(" -.7e+0435" ));
         System.out.println("================================");
         System.out.println(c08.isNumber("12e"));
         System.out.println(c08.isNumber("1a3.14"));
@@ -38,6 +39,9 @@ public class C08 {
 
     }
 
+    // 遍历法
+    // 时间复杂度：O(n)
+    // 空间复杂度：O(1)
     public boolean isNumber(String s) {
         s = s.trim();
         boolean havePlus = false;
@@ -73,6 +77,8 @@ public class C08 {
                 haveE = true;
                 haveNum = false;
                 pointNum = 0;
+                haveNeg = false;
+                havePlus = false;
                 continue;
             }
             if (currChar < '0' || currChar > '9') {
