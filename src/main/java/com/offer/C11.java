@@ -1,6 +1,8 @@
 package com.offer;
 
 import java.util.Arrays;
+import java.util.Deque;
+import java.util.LinkedList;
 
 /**
  * @Author:
@@ -38,25 +40,48 @@ public class C11 {
         C11 c11 = new C11();
         int[] ints = c11.maxSlidingWindow(arr, 3);
         System.out.println(Arrays.toString(ints));
+
+
+        int[] ints1 = c11.maxSlidingWindow(new int[]{1}, 1);
+        System.out.println(Arrays.toString(ints1));
     }
 
 
-    public int[] maxSlidingWindow(int[] nums, int k) {
+    public int[] maxSlidingWindow2(int[] nums, int k) {
         if (nums.length == 0) return nums;
 
-        int[] res = new int[nums.length - 2];
+        int[] res = new int[nums.length - k+1];
         int finishIndex = 0;
 
         for (int i = 0; i < nums.length; i++) {
             if (i+k > nums.length) break;
-            int prev = nums[i];
-            int mid = nums[i+1];
-            int last = nums[i+2];
 
-            int max = Math.max(Math.max(prev, mid), last);
+            int max = Integer.MIN_VALUE;
+            for (int j = 0; j < k; j++) {
+                int prev = nums[j+i];
+                max = Math.max(max, prev);
+            }
+
             res[finishIndex++] = max;
         }
 
         return res;
     }
+
+    public int[] maxSlidingWindow(int[] nums, int k) {
+        if(nums.length == 0 || k == 0) return new int[0];
+        Deque<Integer> deque = new LinkedList<>();
+        int[] res = new int[nums.length - k + 1];
+        for(int j = 0, i = 1 - k; j < nums.length; i++, j++) {
+            if(i > 0 && deque.peekFirst() == nums[i - 1])
+                deque.removeFirst(); // 删除 deque 中对应的 nums[i-1]
+            while(!deque.isEmpty() && deque.peekLast() < nums[j])
+                deque.removeLast(); // 保持 deque 递减
+            deque.addLast(nums[j]);
+            if(i >= 0)
+                res[i] = deque.peekFirst();  // 记录窗口最大值
+        }
+        return res;
+    }
+
 }
